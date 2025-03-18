@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Onsleutelen";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-3">Ontsleutel Tekst</h2>
+    <form name="ontsleutelFORM" method="post">
+
+        <div class="mb-3">
+            <label for="textToDecrypt" class="form-label">Geef de tekst die je wilt ontsleutelen</label>
+            <textarea class="form-control" id="textToDecrypt" name="textToDecrypt" rows="4"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="key" class="form-label">Kies een sleutel:</label>
+            <input type="text" class="form-control" id="key" name="key">
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">ontsleutel</button>
+    </form>
+</div>
+
+@if (ViewBag.DecryptedText != null)
+{
+    <h3>Resultaat</h3>
+    <p><strong>Originele Tekst:</strong> @ViewBag.OriginalText</p>
+    <p><strong>Sleutel:</strong> @ViewBag.Key</p>
+    <p><strong>onsleutelde Tekst:</strong> @ViewBag.DecryptedText</p>
+}
