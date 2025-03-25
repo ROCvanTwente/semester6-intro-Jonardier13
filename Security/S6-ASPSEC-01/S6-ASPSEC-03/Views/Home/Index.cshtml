@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Hash Generator";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-3">Genereer een Hash</h2>
+    <form method="post">
+        <div class="mb-3">
+            <label for="textToHash" class="form-label">Voer tekst in:</label>
+            <input type="text" class="form-control" id="textToHash" name="textToHash">
+        </div>
+
+        <fieldset class="mb-3">
+            <legend>Kies een hash-algoritme:</legend>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="algorithm" value="MD5" id="md5">
+                <label class="form-check-label" for="md5">MD5</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="algorithm" value="SHA-1" id="sha1">
+                <label class="form-check-label" for="sha1">SHA-1</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="algorithm" value="SHA256" id="sha256">
+                <label class="form-check-label" for="sha256">SHA256</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="algorithm" value="SHA512" id="sha512">
+                <label class="form-check-label" for="sha512">SHA512</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="algorithm" value="BCrypt" id="bcrypt">
+                <label class="form-check-label" for="bcrypt">BCrypt</label>
+            </div>
+        </fieldset>
+
+        <button type="submit" class="btn btn-primary w-100">Genereer Hash</button>
+    </form>
+</div>
+
+@if (ViewBag.HashedText != null)
+{
+    <h3 class="mt-4">Resultaat</h3>
+    <p><strong>Originele Tekst:</strong> @ViewBag.OriginalText</p>
+    <p><strong>Gekozen Algoritme:</strong> @ViewBag.Algorithm</p>
+    <p><strong>Gehashte Tekst:</strong> @ViewBag.HashedText</p>
+}
