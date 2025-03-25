@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "AddMinutes Test";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-3">AddMinutes Methode</h2>
+    <form method="post">
+        <div class="mb-3">
+            <label for="inputDate" class="form-label">Voer een datum in:</label>
+            <input type="datetime-local" class="form-control" id="inputDate" name="inputDate" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" required />
+        </div>
+
+        <div class="mb-3">
+            <label for="minutes" class="form-label">Aantal minuten toe te voegen:</label>
+            <input type="number" class="form-control" id="minutes" name="minutes" min="1" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Test</button>
+    </form>
+
+    @if (ViewBag.NewDate != null)
+    {
+        <h3 class="mt-4">Resultaat</h3>
+        <p><strong>Originele Datum:</strong> @ViewBag.OriginalDate</p>
+        <p><strong>Nieuwe Datum:</strong> @ViewBag.NewDate</p>
+    }
+
+    @if (ViewBag.Output != null)
+    {
+        <p class="text-danger">@ViewBag.Output</p>
+    }
+</div>

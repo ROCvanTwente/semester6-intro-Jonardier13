@@ -18,8 +18,46 @@ namespace S6_CSHARP_01.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult FirstCharUp()
         {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult FirstCharUp(string tekst)
+        {
+            // Sla de originele tekst op
+            ViewBag.InputString = tekst;
+
+            // Roep de Extension Method aan om de tekst om te zetten
+            ViewBag.Output = ExtentionMethods.FirstCharToUpper(tekst);
+
+            // Retourneer de view
+            return View();
+        }
+
+
+        public IActionResult AddMin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddMin(DateTime inputDate, int minutes)
+        {
+            // Controleer of de ingevoerde datum geldig is
+            if (inputDate == default(DateTime))
+            {
+                ViewBag.Output = "Ongeldige datum ingevoerd.";
+                return View();
+            }
+
+            // Roep de AddMinutes extensiemethode aan
+            var newDate = inputDate.AddMinutes(minutes);
+
+            // Gegevens doorgeven aan de view
+            ViewBag.OriginalDate = inputDate.ToString("yyyy-MM-dd HH:mm:ss");
+            ViewBag.NewDate = newDate.ToString("yyyy-MM-dd HH:mm:ss");
+
             return View();
         }
 

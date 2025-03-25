@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "FirstCharToUpper Test";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-3">Test FirstCharToUpper Methode</h2>
+    <form method="post">
+        <div class="mb-3">
+            <label for="tekst" class="form-label">Voer een tekst in:</label>
+            <input type="text" class="form-control" id="tekst" name="tekst" placeholder="Bijv. koffietijd">
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Test</button>
+    </form>
+
+    @if (ViewBag.Output != null)
+    {
+        <h3 class="mt-4">Resultaat</h3>
+        <p><strong>Originele Tekst:</strong> @ViewBag.InputString</p>
+        <p><strong>Nieuwe Tekst:</strong> @ViewBag.Output</p>
+    }
+</div>
