@@ -1,0 +1,18 @@
+﻿@model S6_CSHARP_02.Models.IVehicle
+
+<h2>Voertuig Details</h2>
+
+<p><strong>Type:</strong> @(Model is S6_CSHARP_02.Models.Car ? "Auto" : "Fiets")</p>
+<p><strong>Kleur:</strong> @Model.Color</p>
+<p><strong>Aantal wielen:</strong> @Model.Wheels</p>
+<p><strong>Snelheid:</strong> @Model.Speed km/u</p>
+
+<form asp-action="IncreaseSpeed" method="post">
+    <input type="hidden" name="vehicleType" value="@(Model is S6_CSHARP_02.Models.Car ? "Car" : "Bicycle")" />
+    <button type="submit">Verhoog snelheid</button>
+</form>
+
+<form asp-action="DecreaseSpeed" method="post">
+    <input type="hidden" name="vehicleType" value="@(Model is S6_CSHARP_02.Models.Car ? "Car" : "Bicycle")" />
+    <button type="submit">Verlaag snelheid</button>
+</form>
