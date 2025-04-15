@@ -1,0 +1,34 @@
+﻿@model List<S6_ASPSEC_04.Models.UserViewModel>
+
+@{
+    ViewData["Title"] = "Gebruikersbeheer";
+}
+
+<h1>Gebruikersbeheer</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Rollen</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Email</td>
+                <td>
+                    @if (user.Roles.Any())
+                    {
+                        @string.Join(", ", user.Roles)
+                    }
+                    else
+                    {
+                        <span>Geen rollen</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
