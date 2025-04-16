@@ -1,0 +1,29 @@
+﻿@model CreateUserViewModel
+
+@{
+    ViewData["Title"] = "Nieuwe Gebruiker Toevoegen";
+}
+
+<h1>Nieuwe Gebruiker Toevoegen</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="email" class="form-control" id="Email" name="Email" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Password">Wachtwoord</label>
+        <input type="password" class="form-control" id="Password" name="Password" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Role">Rol</label>
+        <select class="form-control" name="Role">
+            <option value="Admin">Admin</option>
+            <option value="Gebruiker">Gebruiker</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Gebruiker Toevoegen</button>
+</form>

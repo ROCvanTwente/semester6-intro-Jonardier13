@@ -11,6 +11,7 @@
         <tr>
             <th>Email</th>
             <th>Rollen</th>
+            <th>Acties</th>
         </tr>
     </thead>
     <tbody>
@@ -18,17 +19,41 @@
         {
             <tr>
                 <td>@user.Email</td>
+                <td>@user.Roles</td>
                 <td>
-                    @if (user.Roles.Any())
-                    {
-                        @string.Join(", ", user.Roles)
-                    }
-                    else
-                    {
-                        <span>Geen rollen</span>
-                    }
+                    <form asp-action="ChangeUserRole" method="post">
+                        <input type="hidden" name="userId" value="@user.Id" />
+
+                        <select name="roleName" class="form-select">
+                            @foreach (var role in user.AllRoles) // Dynamisch door de rollen itereren
+                            {
+                                <option value="@role" selected="@(role == user.SelectedRole ? "selected" : null)">
+                                    @role
+                                </option>
+                            }
+                        </select>
+
+                        <button type="submit" class="btn btn-sm btn-primary mt-1">Wijzig rol</button>
+                    </form>
+
+                    <a href="@Url.Action("DeleteUser", "Admin", new { userId = user.Id })" class="btn btn-sm btn-danger mt-2">Verwijder</a>
                 </td>
+
             </tr>
         }
     </tbody>
 </table>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
